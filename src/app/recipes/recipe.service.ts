@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
+import 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { Recipe } from './recipe.model';
@@ -37,7 +40,13 @@ export class RecipeService {
 
 	];
 
-	constructor(private slService: ShoppingListService) {}
+	constructor(private http: Http, private slService: ShoppingListService) {}
+
+	setRecipes(recipes: Recipe[]) {
+		this.recipes = recipes;
+		this.recipesChanged.next(this.recipes.slice());
+
+	}
 
 	getRecipes() {
 		return this.recipes.slice();
