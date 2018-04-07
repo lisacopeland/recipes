@@ -14,31 +14,35 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
-      'A test Recipe',
-      'A test recipe description',
-      'http://www.seriouseats.com/recipes/assets_c/2015/12/20151218-braised-chicken-thigh-cabbage-pancetta-recipe-kenji-14-thumb-1500xauto-428923.jpg',
+      'Fruit Salad',
+      'A fresh fruit salad arranged attractively on a platter',
+      './assets/fruit salad.png',
       [
-        new Ingredient('Meat', 1),
-        new Ingredient('Noodles', 3),
-        new Ingredient('Onions', 2)
+        new Ingredient('Strawberries', 1),
+        new Ingredient('Kiwi Fruit', 3),
+        new Ingredient('Pineapple', 2)
       ]
     ),
 
     new Recipe(
-      'Test Recipe 2',
-      'Another test recipe description',
-      'https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg',
+      'Shrimp Cobb Salad',
+      'A fresh salad with shrimp, avocado, and romaine lettuce',
+      './assets/shrimp cobb salad.png',
       [
-        new Ingredient('Tomatos', 4),
-        new Ingredient('Pickles', 10),
-        new Ingredient('Bread', 2)
+        new Ingredient('Shrimp', 4),
+        new Ingredient('Avocado', 10),
+        new Ingredient('Romaine Lettuce', 2)
       ]
     ),
     new Recipe(
-      'Test Recipe 3',
-      'One more test recipe description',
-      'http://static2.businessinsider.com/image/51f03f966bb3f73c7700000b/19-fast-food-hacks-that-will-change-the-way-you-order.jpg',
-      []
+      'Vegetable Fried Rice',
+      'A healthy vegetarian stir-fried rice dish',
+      './assets/vegetable-fried-rice.jpg',
+      [
+        new Ingredient('Brown Rice', 4),
+        new Ingredient('Asparagus', 10),
+        new Ingredient('Green Onions', 2)
+      ]
     )
   ];
 

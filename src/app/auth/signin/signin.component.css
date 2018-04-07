@@ -1,0 +1,12 @@
+.form-group {
+    width: 300px;
+}
+
+.signin-box {
+  width: 450px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 15px;
+  border: 1px solid gray;
+}
