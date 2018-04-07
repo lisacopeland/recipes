@@ -4,50 +4,46 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-	token: string;
+  token: string;
 
-	constructor(private router: Router) {}
+  constructor(private router: Router) {}
 
-	signupUser(email: string, password:string) {
-		firebase.auth().createUserWithEmailAndPassword(email, password)
-		.catch(
-			error => console.log(error)
-		);
-	}
+  signupUser(email: string, password: string) {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(error => console.log(error));
+  }
 
-	signinUser(email: string, password:string) {
-		firebase.auth().signInWithEmailAndPassword(email, password)
-		.then(
-			response => {
-				console.log(response);
-				this.router.navigate(['/']);
-				firebase.auth().currentUser.getToken()
-					.then(
-						(token: string) => this.token = token
-					)
-			}
-		)
-		.catch(
-			error => console.log(error)
-		);
-	}
+  signinUser(email: string, password: string) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(response => {
+        console.log(response);
+        this.router.navigate(['/']);
+        firebase
+          .auth()
+          .currentUser.getToken()
+          .then((token: string) => (this.token = token));
+      })
+      .catch(error => console.log(error));
+  }
 
-	signOut() {
-		firebase.auth().signOut();
-		this.token = null;
-	}
+  signOut() {
+    firebase.auth().signOut();
+    this.token = null;
+  }
 
-	getToken() {
-		firebase.auth().currentUser.getToken()
-			.then(
-				(token: string) => this.token = token
-			);
-		return this.token;
+  getToken() {
+    firebase
+      .auth()
+      .currentUser.getToken()
+      .then((token: string) => (this.token = token));
+    return this.token;
+  }
 
-	}
-
-	isAuthenticated() {
-		return this.token != null;
-	}
-
+  isAuthenticated() {
+    return this.token != null;
+  }
 }

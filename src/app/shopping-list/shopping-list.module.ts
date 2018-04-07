@@ -6,17 +6,7 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list.component';
 
 @NgModule({
-	declarations: [
-		ShoppingListComponent,
-		ShoppingEditComponent
-		
-	],
-	imports: [
-		CommonModule,
-		FormsModule
-	]
+  declarations: [ShoppingListComponent, ShoppingEditComponent],
+  imports: [CommonModule, FormsModule]
 })
-
-export class ShoppingListModule {
-
-}
+export class ShoppingListModule {}

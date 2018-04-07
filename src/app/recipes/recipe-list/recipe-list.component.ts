@@ -16,17 +16,19 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[];
   subscription: Subscription;
 
-  constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipesChanged.
-      subscribe((recipes: Recipe[]) => {
+    this.subscription = this.recipeService.recipesChanged.subscribe(
+      (recipes: Recipe[]) => {
         this.recipes = recipes;
-      });
+      }
+    );
     this.recipes = this.recipeService.getRecipes();
-
   }
 
   ngOnDestroy() {
@@ -34,7 +36,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   createNew() {
-    this.router.navigate(['new'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+    this.router.navigate(['new'], {
+      relativeTo: this.route,
+      queryParamsHandling: 'preserve'
+    });
   }
 
   // We don't need this anymore because the recipe service is emitting the event
@@ -43,5 +48,4 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.recipeWasChosen.emit(thisRecipe);
   }
   */
-
 }

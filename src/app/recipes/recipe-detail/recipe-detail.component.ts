@@ -11,40 +11,38 @@ import { RecipeService } from '../recipe.service';
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.css']
-
 })
 export class RecipeDetailComponent implements OnInit {
-	thisRecipe: Recipe;
-	id: number;
+  thisRecipe: Recipe;
+  id: number;
 
-	constructor(private recipeService: RecipeService,
-				private route: ActivatedRoute,
-				private router: Router) { }
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
-  	ngOnInit() {
-  		this.route.params
-  			.subscribe(
-  				(params: Params) =>{
-					this.id = +params['id'];
-					this.thisRecipe = this.recipeService.getRecipe(this.id);
-  				})
-  	}
-		
-	onAddIngredients() {
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.thisRecipe = this.recipeService.getRecipe(this.id);
+    });
+  }
 
-		this.recipeService.addIngredientsToShoppingList(this.thisRecipe.ingredients);
-	}
+  onAddIngredients() {
+    this.recipeService.addIngredientsToShoppingList(
+      this.thisRecipe.ingredients
+    );
+  }
 
-	onEditRecipe() {
-		// The following works fine, but if you want to explicitly express the id use the second
-		//this.router.navigate(['edit'], {relativeTo: this.route});
-		this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
-  	
-  	}
+  onEditRecipe() {
+    // The following works fine, but if you want to explicitly express the id use the second
+    // this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
+  }
 
-  	onDeleteRecipe() {
-  		this.recipeService.deleteRecipe(this.id);
-  		this.router.navigate(['/recipes']);
-  	}
-
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
 }

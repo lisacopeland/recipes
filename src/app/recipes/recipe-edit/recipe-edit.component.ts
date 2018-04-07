@@ -9,33 +9,30 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
-
 export class RecipeEditComponent implements OnInit {
-	id: number;
-	editMode = false;
+  id: number;
+  editMode = false;
   recipeForm: FormGroup;
 
-  constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService,
-              private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private recipeService: RecipeService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-  	this.route.params
-  		.subscribe(
-  			(params: Params) =>{
-  				this.id = +params['id'];
-  				this.editMode = params['id'] != null;
-  				console.log(this.editMode);
-          this.initForm();
-  			}
-  		);
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.editMode = params['id'] != null;
+      console.log(this.editMode);
+      this.initForm();
+    });
   }
 
   onSubmit() {
-
     // We don't need to do this because the recipeForm has the exact same data as the model in
     // the same order
-    //const newRecipe = new Recipe(
+    // const newRecipe = new Recipe(
     //  this.recipeForm.value['name'],
     //  this.recipeForm.value['description'],
     //  this.recipeForm.value['imagePath'],
@@ -50,15 +47,17 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        'name': new FormControl(null, Validators.required),
-        'amount': new FormControl(null, [Validators.required,
-                  Validators.pattern(/^[1-9]+[0-9]*$/)])
+        name: new FormControl(null, Validators.required),
+        amount: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/)
+        ])
       })
     );
   }
@@ -71,11 +70,10 @@ export class RecipeEditComponent implements OnInit {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
   private initForm() {
-
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
-    let recipeIngredients = new FormArray([]);
+    const recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
@@ -83,13 +81,14 @@ export class RecipeEditComponent implements OnInit {
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
       if (recipe['ingredients']) {
-        for (let ingredient of recipe.ingredients) {
+        for (const ingredient of recipe.ingredients) {
           recipeIngredients.push(
             new FormGroup({
-              'name': new FormControl(ingredient.name, Validators.required),
-              'amount': new FormControl(ingredient.amount, 
-                  [Validators.required,
-                  Validators.pattern(/^[1-9]+[0-9]*$/)])
+              name: new FormControl(ingredient.name, Validators.required),
+              amount: new FormControl(ingredient.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ])
             })
           );
         }
@@ -97,12 +96,10 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
-        'name': new FormControl(recipeName, Validators.required),
-        'imagePath': new FormControl(recipeImagePath, Validators.required),
-        'description': new FormControl(recipeDescription, Validators.required),
-        'ingredients': recipeIngredients
-
+      name: new FormControl(recipeName, Validators.required),
+      imagePath: new FormControl(recipeImagePath, Validators.required),
+      description: new FormControl(recipeDescription, Validators.required),
+      ingredients: recipeIngredients
     });
   }
-
 }

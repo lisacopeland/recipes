@@ -7,31 +7,28 @@ import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html'
-  //styleUrls: ['./app.component.css']
+  // styleUrls: ['./app.component.css']
 })
 export class HeaderComponent {
+  constructor(
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
+  ) {}
 
-	constructor(private dataStorageService: DataStorageService,
-				private authService: AuthService) { }
+  onSaveData() {
+    this.dataStorageService.storeRecipes().subscribe((response: Response) => {
+      console.log(response);
+    });
+  }
 
-	onSaveData() {
-		this.dataStorageService.storeRecipes()
-			.subscribe(
-				(response: Response) => {
-					console.log(response);
-				}
-		);
-		}
+  onFetchData() {
+    this.dataStorageService.fetchRecipes();
+  }
 
-	onFetchData() {
-	 	this.dataStorageService.fetchRecipes();
-      		
-	}
-
-	onLogout() {
-		this.authService.signOut();
-	}
- isAuthenticated() {
+  onLogout() {
+    this.authService.signOut();
+  }
+  isAuthenticated() {
     return this.authService.isAuthenticated();
   }
 }
