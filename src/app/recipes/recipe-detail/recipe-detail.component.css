@@ -1,0 +1,25 @@
+.recipe-detail-box {
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 7px;
+  font: 'Source Sans Pro';
+  width: 600px;
+  margin-top: 1px;
+  margin-left: 20px;
+  padding-left: 40px;
+  padding-top: 65px;
+}
+
+.button-drop {
+  margin: 20px 0px 20px 0px;
+}
+
+.recipe-desc {
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.list-item-narrow {
+  height: 30px;
+  font-size: 16px;
+  padding-bottom: 3px;
+}

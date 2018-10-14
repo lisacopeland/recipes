@@ -3,10 +3,9 @@
 }
 
 .signin-box {
-  width: 450px;
+  width: 350px;
   padding-right: 15px;
-  padding-top: 15px;
   padding-bottom: 15px;
   margin: 15px;
-  border: 1px solid gray;
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 }

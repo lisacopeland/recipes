@@ -1,0 +1,10 @@
+.recipe-list {
+  background-color: #eff3f6;
+}
+
+.add-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  outline: none;
+}

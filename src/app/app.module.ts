@@ -9,7 +9,12 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-
+/**
+ * Main App Module
+ * 
+ * @export
+ * @class AppModule
+ */
 @NgModule({
   declarations: [AppComponent],
   imports: [

@@ -42,10 +42,4 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     });
   }
 
-  // We don't need this anymore because the recipe service is emitting the event
-  /*
-  onRecipeSelected(thisRecipe: Recipe) {
-    this.recipeWasChosen.emit(thisRecipe);
-  }
-  */
 }

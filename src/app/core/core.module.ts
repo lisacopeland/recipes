@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 
@@ -12,9 +13,9 @@ import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '../auth/auth-guard.service';
 
 @NgModule({
-  declarations: [HeaderComponent, HomeComponent],
+  declarations: [HeaderComponent, HomeComponent, FooterComponent],
   imports: [SharedModule, AppRoutingModule],
-  exports: [AppRoutingModule, HeaderComponent],
+  exports: [AppRoutingModule, HeaderComponent, FooterComponent],
   providers: [
     ShoppingListService,
     RecipeService,

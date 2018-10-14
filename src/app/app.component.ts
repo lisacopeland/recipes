@@ -2,7 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 
 import { ActivatedRoute, Router } from '@angular/router';
-
+/**
+ * App Component (Root) of the Recipes app
+ * 
+ * @export
+ * @class AppComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
