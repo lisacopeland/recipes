@@ -10,8 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 /**
- * Main App Module
- * 
+ * Main App Module and root of the Recipes App
+ *
  * @export
  * @class AppModule
  */

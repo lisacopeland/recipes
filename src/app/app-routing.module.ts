@@ -10,6 +10,13 @@ const appRoutes: Routes = [
   { path: 'shopping-list', component: ShoppingListComponent }
 ];
 
+/**
+ * Routes for the recipe app. Route defaults to the home component. Recipes
+ * is lazy loaded and shopping list is eagerly loaded.
+ *
+ * @export
+ * @class AppRoutingModule
+ */
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })

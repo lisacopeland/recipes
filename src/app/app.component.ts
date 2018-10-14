@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-
 import { ActivatedRoute, Router } from '@angular/router';
+
 /**
- * App Component (Root) of the Recipes app
- * 
+ * App Component (Root) of the Recipes app. Holds the Header, footer, and router outlet
+ *
  * @export
  * @class AppComponent
  * @implements {OnInit}
@@ -20,6 +20,11 @@ export class AppComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
+  /**
+   * Initialize firebase
+   *
+   * @memberof AppComponent
+   */
   ngOnInit() {
     firebase.initializeApp({
       apiKey: 'AIzaSyBey6Rm-bKr890lWBy_BRw-pbD7fjOw4Dg',
@@ -27,6 +32,12 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Highlights the current menu item and navigates to that item
+   *
+   * @param {{ menuItem: string }} eventData
+   * @memberof AppComponent
+   */
   onMenuClicked(eventData: { menuItem: string }) {
     console.log('Menu item clicked - ' + eventData.menuItem);
     this.currentMenuItem = eventData.menuItem;

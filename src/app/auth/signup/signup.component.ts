@@ -3,6 +3,13 @@ import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
+/**
+ * Display the signup form and signup the user
+ *
+ * @export
+ * @class SignupComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',

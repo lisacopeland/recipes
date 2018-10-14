@@ -2,8 +2,15 @@ import { Ingredient } from '../shared/ingredient.model';
 
 import { Subject } from 'rxjs/Subject';
 
+/**
+ * Service which maintains the shopping list data. This service doesn't persist
+ * the data - the data-storage service does. This is so a casual user and see data
+ * and play around with the app and not alter the demo data
+ *
+ * @export
+ * @class ShoppingListService
+ */
 export class ShoppingListService {
-  // Event Emitter to tell the shopping list when an the ingredient array has changed
   ingredientsChanged = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
 
@@ -13,8 +20,6 @@ export class ShoppingListService {
   ];
 
   getIngredients() {
-    // Like a getter for this service - use slice so you give them a copy of
-    // ingredients, not access to the actual array
     return this.ingredients.slice();
   }
 
@@ -28,8 +33,6 @@ export class ShoppingListService {
   }
 
   addIngredients(ingredients: Ingredient[]) {
-    // the '...' is a spread operator, used for filling function arguments
-    // with array elements (Feature of es6)
     this.ingredients.push(...ingredients);
     this.ingredientsChanged.next(this.ingredients.slice());
   }

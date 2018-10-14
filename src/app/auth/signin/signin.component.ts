@@ -3,6 +3,13 @@ import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../auth.service';
 
+/**
+ * Display a form and then authenticate the user
+ *
+ * @export
+ * @class SigninComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
